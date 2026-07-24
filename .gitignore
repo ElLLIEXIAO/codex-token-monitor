@@ -1,0 +1,15 @@
+.DS_Store
+.build/
+.swiftpm/
+.xcode-derived/
+DerivedData/
+dist/
+*.xcuserstate
+xcuserdata/
+
+# Local runtime data
+snapshot.json
+
+# Internal project notes
+项目当前上下文.md
+项目导航.md

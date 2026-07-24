@@ -1,0 +1,50 @@
+name: CodexTokenNative
+options:
+  bundleIdPrefix: com.ellie
+  deploymentTarget:
+    macOS: "14.0"
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    CODE_SIGN_STYLE: Manual
+    CODE_SIGN_IDENTITY: "-"
+    DEVELOPMENT_TEAM: ""
+targets:
+  CodexToken:
+    type: application
+    platform: macOS
+    sources:
+      - Native/App
+      - Native/Shared
+    info:
+      path: Native/App/Info.plist
+      properties:
+        CFBundleDisplayName: Codex Token
+        LSMinimumSystemVersion: "14.0"
+        NSHighResolutionCapable: true
+    dependencies:
+      - target: CodexTokenWidget
+        embed: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.ellie.CodexToken
+        PRODUCT_NAME: Codex Token
+        ENABLE_APP_SANDBOX: false
+  CodexTokenWidget:
+    type: app-extension
+    platform: macOS
+    sources:
+      - Native/Widget
+      - Native/Shared
+    info:
+      path: Native/Widget/Info.plist
+      properties:
+        CFBundleDisplayName: Codex Token
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.ellie.CodexToken.Widget
+        PRODUCT_NAME: CodexTokenWidget
+        ENABLE_APP_SANDBOX: true
+        SKIP_INSTALL: true
